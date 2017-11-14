@@ -41,9 +41,9 @@ void setup() {
   String []am2FileNames = am2Folder.list();
   folderCount += am2FileNames.length;
   
-  java.io.File homeFolder = new java.io.File(dataPath("homecoming"));
-  String []homeFileNames = homeFolder.list();
-  folderCount += homeFileNames.length;
+  //java.io.File homeFolder = new java.io.File(dataPath("homecoming"));
+  //String []homeFileNames = homeFolder.list();
+  //folderCount += homeFileNames.length;
   
   // initialize labels and training arrays
   labels = new int[folderCount];
@@ -106,14 +106,14 @@ void setup() {
     labels[startNum+i] = 4;
   }
   
-  startNum += am2FileNames.length;
-  for (int i=0; i<homeFileNames.length; i++) {
-    println("loading home : " + i);
-    img = loadImage("homecoming/" + homeFileNames[i]);
-    img.resize(800, 800);
-    trainingData[startNum+i] = buildVector(img);
-    labels[startNum+i] = 6;
-  }
+  //startNum += am2FileNames.length;
+  //for (int i=0; i<homeFileNames.length; i++) {
+  //  println("loading home : " + i);
+  //  img = loadImage("homecoming/" + homeFileNames[i]);
+  //  img.resize(800, 800);
+  //  trainingData[startNum+i] = buildVector(img);
+  //  labels[startNum+i] = 6;
+  //}
   
   
   // setup SVM model
@@ -178,9 +178,9 @@ void evaluateResults(){
     if(r == 4.0 && split(testFileNames[i], "-")[0].equals("amazing2")){
       numCorrect++;
     }
-    if(r == 6.0 && split(testFileNames[i], "-")[0].equals("homecoming")){
-      numCorrect++;
-    }
+    //if(r == 6.0 && split(testFileNames[i], "-")[0].equals("homecoming")){
+    //  numCorrect++;
+    //}
   }
   
   correctPercentage = (float)numCorrect/testFileNames.length;
